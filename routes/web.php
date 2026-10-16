@@ -4,9 +4,24 @@ use App\Http\Controllers\elmeucontrolador;
 use App\Http\Controllers\CocheRelacionController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+Route::get('/', [AuthController::class, 'f_index'])->name('login');
+
+
+Route::middleware("guest")->group(function ()
+{
+    // Rutas de Autenticación
+Route::post('/login', [AuthController::class, 'f_login'])->name('login_autenticar');
+Route::get('/registro', [AuthController::class, 'f_registro'])->name('registro');
+Route::post('/registro', [AuthController::class, 'f_registro_guardar'])->name('registro_guardar');
+});
+
+
+Route::middleware("auth")->group(function ()
+{
+Route::get('/logout', [AuthController::class, 'f_logout'])->name('logout');
 
 // ELIMINAMOS la línea de view('index') y dejamos la del controlador de autenticación como la ruta principal:
-Route::get('/', [AuthController::class, 'f_index'])->name('login');
+// Route::get('/', [AuthController::class, 'f_index'])->name('login');
 
 // Rutas informativas
 Route::get('/nosotros', function () { return view('nosotros'); });
@@ -31,8 +46,5 @@ Route::patch('/modificar/{fila}',[elmeucontrolador::class, 'f_actualimodificarfi
 
 Route::get('/consultar-coches', [CocheRelacionController::class, 'index'])->name('coches_consultar');
 
-// Rutas de Autenticación
-Route::post('/login', [AuthController::class, 'f_login'])->name('login_autenticar');
-Route::get('/registro', [AuthController::class, 'f_registro'])->name('registro');
-Route::post('/registro', [AuthController::class, 'f_registro_guardar'])->name('registro_guardar');
-Route::get('/logout', [AuthController::class, 'f_logout'])->name('logout');
+});
+

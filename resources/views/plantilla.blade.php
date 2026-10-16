@@ -20,7 +20,9 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <!-- Enlaces de navegación generales -->
+                
                 <ul class="navbar-nav me-auto">
+                     @auth
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/dondeestamos') }}">Donde estamos</a></li>
@@ -30,8 +32,9 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('datos_borrar') }}">Coche vendido</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('datos_modificar') }}">Modificar coche</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('coches_consultar') }}">consultar_taules</a></li>
+                 @endauth
                 </ul>
-
+                    
                 <!-- Enlaces de autenticación alineados a la derecha -->
                 <ul class="navbar-nav ms-auto">
                     @guest
@@ -43,14 +46,14 @@
                         </li>
                     @endguest
 
-                    @auth
+                    {{-- @auth
                         <li class="nav-item">
                             <span class="navbar-text me-3 text-light">Hola, <strong>{{ Auth::user()->name }}</strong></span>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
                         </li>
-                    @endauth
+                    @endauth --}}
                 </ul>
             </div>
         </div>
