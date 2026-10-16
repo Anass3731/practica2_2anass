@@ -61,7 +61,7 @@ class AuthController extends Controller
         Session::flush(); // Borra todos los datos de la sesión actual
     Auth::logout();     // Cierra la autenticación del usuario
      
-    return view("logout"); // Carga la vista de desconexión
+    return view("logout"); // Carga la vista de desconexión.
     }
 
     public function f_login(Request $request)    
