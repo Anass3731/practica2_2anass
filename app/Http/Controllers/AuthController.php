@@ -11,10 +11,13 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-  public function f_index()
-    {
-        return view("login");
+  public function f_index() {
+    if (Auth::check()) {
+        return view('index');
     }
+    
+    return view('login');
+}
  
     public function f_registro()
     {   
