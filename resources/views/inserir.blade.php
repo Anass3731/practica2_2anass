@@ -58,9 +58,24 @@
             </div>
 
             <div class="mb-3">
-                <label for="color" class="form-label">¿De qué color es?</label>
-                <input type="text" class="form-control" name="color" id="color" placeholder="Rojo, Negro, Blanco..." value="{{ old('color') }}">
+                <label for="color" class="form-label">Color del coche</label>
+                <input type="text" class="form-control" name="color" id="color" placeholder="Escribe el color del coche" value="{{ old('color') }}">
                 @error('color')
+                    <h6 class="alert alert-danger mt-1 p-1">{{ $message }}</h6>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="ttipos_motor_id" class="form-label">Tipo de Motor</label>
+                <select name="ttipos_motor_id" id="ttipos_motor_id" class="form-control" required>
+                    <option value="">-- Selecciona el tipo de motor --</option>
+                    @foreach($tiposMotor as $motor)
+                        <option value="{{ $motor->id }}" {{ old('ttipos_motor_id') == $motor->id ? 'selected' : '' }}>
+                            {{ $motor->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('ttipos_motor_id')
                     <h6 class="alert alert-danger mt-1 p-1">{{ $message }}</h6>
                 @enderror
             </div>

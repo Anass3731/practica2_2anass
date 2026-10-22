@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tcoches;
+use App\Models\Ttipos_motor;
 use Illuminate\Validation\Rules\Numeric;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,8 +12,8 @@ class elmeucontrolador extends Controller
 {
     public function f_formulari()
     {
-        $dades = Tcoches::all();
-        return view('inserir', compact("dades")); 
+        $tiposMotor = Ttipos_motor::all();
+        return view('inserir', compact("tiposMotor")); 
     }
 
     public function f_insert(Request $request)
@@ -35,11 +36,13 @@ class elmeucontrolador extends Controller
         ]);
 
         $todo = new Tcoches();
-        $todo->matricula = $request->matricula;
-        $todo->marca     = $request->marca;
-        $todo->modelo    = $request->modelo;
-        $todo->anyo      = $request->anyo;
-        $todo->color     = $request->color;
+        $todo->matricula       = $request->matricula;
+        $todo->marca           = $request->marca;
+        $todo->modelo          = $request->modelo;
+        $todo->anyo            = $request->anyo;
+        $todo->color           = $request->color;
+        $todo->ttipos_motor_id = $request->ttipos_motor_id; 
+
         $todo->save();
 
         return redirect()->route("datos_insertar")->with('success', '¡¡Coche guardado con éxito!!');

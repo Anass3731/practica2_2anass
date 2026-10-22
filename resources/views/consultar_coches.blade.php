@@ -7,6 +7,24 @@
     <h2>CONSULTAR TAULES (Relaciones 1:N y N:M)</h2>
     <hr>
 
+    <!-- Sección para mostrar los esquemas E/R -->
+    <div class="row mt-5">
+        <div class="col-md-6 text-center">
+            <h5 class="mb-3">Esquema 1:N (Coches y Tipos de Motor)</h5>
+            <div class="card p-3 shadow-sm bg-white rounded">
+                <img src="{{ asset('img/1N.png') }}" alt="Esquema ER 1:N" class="img-fluid rounded">
+            </div>
+        </div>
+        
+        <div class="col-md-6 text-center">
+            <h5 class="mb-3">Esquema N:M (Coches y Extras)</h5>
+            <div class="card p-3 shadow-sm bg-white rounded">
+                <img src="{{ asset('img/NM.png') }}" alt="Esquema ER N:M" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+
+
     <table class="table table-bordered table-striped align-middle mt-3">
         <thead class="table-dark">
             <tr>
