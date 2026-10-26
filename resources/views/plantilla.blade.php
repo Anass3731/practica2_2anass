@@ -28,10 +28,11 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('dades_consultar') }}">Ver catálogo</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('datos_buscar') }}">Buscar coche</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('coches_consultar') }}">Consultar Relaciones</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('datos_insertar') }}">Añadir coche</a></li>
+                        
 
                         <!-- Enlaces EXCLUSIVOS si el usuario está autenticado y es 'admin' -->
                         @if(Auth::check() && Auth::user()->rol === 'admin')
+                            <li class="nav-item"><a class="nav-link" href="{{ route('datos_insertar') }}">Añadir coche</a></li>
                             <li class="nav-item"><a class="nav-link text-warning fw-bold" href="{{ route('datos_modificar') }}">Modificar coche</a></li>
                             <li class="nav-item"><a class="nav-link text-danger fw-bold" href="{{ route('datos_borrar') }}">Coche vendido</a></li>
                         @endif

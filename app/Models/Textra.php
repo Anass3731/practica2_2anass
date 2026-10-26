@@ -10,9 +10,21 @@ class Textra extends Model
     use HasFactory;
 
     protected $table = 'textras';
-    public $timestamps = false; // <--- Añade esto
 
-    public function coches() {
-        return $this->belongsToMany(tcoches::class, 'coche_extra', 'extra_id', 'coche_matricula');
+    public $timestamps = false;
+
+    protected $fillable = [
+        'nombre',
+        'precio',
+    ];
+
+    public function coches()
+    {
+        return $this->belongsToMany(
+            tcoches::class,
+            'coche_extra',
+            'extra_id',
+            'coche_matricula'
+        );
     }
 }

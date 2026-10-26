@@ -20,10 +20,11 @@ class elmeucontrolador extends Controller
     {
         $request->validate([
             'matricula' => 'required|unique:tcoches,matricula',
-            'marca'     => 'required',
-            'modelo'    => 'required',
-            'anyo'      => 'required|numeric',
-            'color'     => 'required'
+            'marca' => 'required',
+            'modelo' => 'required',
+            'anyo' => 'required|numeric',
+            'color' => 'required',
+            'ttipos_motor_id' => 'required|exists:ttipos_motor,id',
         ], [
             'matricula.required' => "Debes introducir una matrícula",
             'matricula.unique'   => "La matrícula ya existe",

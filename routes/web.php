@@ -36,7 +36,7 @@ Route::middleware("auth")->group(function () {
     Route::post('/buscar', [elmeucontrolador::class, 'f_buscar'])->name('datos_buscar');
 
     // Gestión del CRUD (Añadir coche)
-    Route::get('/inserir', [elmeucontrolador::class, 'f_formulari'])->name('datos_insertar');
+    Route::get('/inserir', [elmeucontrolador::class,'f_formulari'])->middleware(['auth', 'can:admin'])->name('datos_insertar');
     Route::post('/inserir', [elmeucontrolador::class, 'f_insert'])->name('datos_insertar');
 
     // Gestión del CRUD EXCLUSIVA para ADMINISTRADORES

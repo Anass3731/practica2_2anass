@@ -10,9 +10,16 @@ class Ttipos_motor extends Model
     use HasFactory;
 
     protected $table = 'ttipos_motor';
-    public $timestamps = false; // <--- Añade esto
 
-    public function coches() {
+    public $timestamps = false;
+
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+    ];
+
+    public function coches()
+    {
         return $this->hasMany(tcoches::class, 'ttipos_motor_id');
     }
 }
